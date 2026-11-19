@@ -19,7 +19,8 @@ interface Props {
 const { title, description, robots, ogImage, ld = [], mainClass = 'flex-1', lang = DEFAULT_LOCALE } = Astro.props;
 
 const site = Astro.site!;
-const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+// con build.format 'file' la portada llega como /index: su URL pública es /
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/(^|\/)index$/, '').replace(/\/$/, '') || '/';
 const canonical = site.origin + (path === '/' ? '/' : path);
 const og = new URL(ogImage || '/img/og-coolnetworks.jpg', site).href;
 // Organización + WebSite en todas las páginas (como el Layout de Horizons), luego los de la página.

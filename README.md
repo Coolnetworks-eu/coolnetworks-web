@@ -36,11 +36,18 @@ Node 22.12 o superior. El formulario no funciona en local (no hay PHP ni SMTP): 
 
 ## Despliegue
 
-1. Push a `main` → GitHub Actions (`.github/workflows/deploy.yml`) construye y publica `dist/` en la rama **`deploy`**.
-2. Hostinger tiene la rama `deploy` conectada (Git → autodeploy) al sitio y la copia en `public_html` en cada push.
+Push a `main` → **Hostinger construye y publica solo** (app de GitHub instalada en la organización
+`Coolnetworks-eu`, despliegue automático activado): `npm ci`, `npm run build` con Node 22 y `dist/` a
+`public_html`. GitHub Actions (`.github/workflows/ci.yml`) solo comprueba que el build pasa.
 
-Mientras la web esté en el subdominio de prueba, la variable del repositorio `PUBLIC_NOINDEX=1` hace que
-`robots.txt` bloquee todo y cada página lleve `noindex`. **Quitarla** al apuntar `coolnetworks.eu`.
+| Entorno | Sitio en Hostinger (pedido 2039759, cuenta de hosting `u769224653`) |
+|---|---|
+| Prueba | `https://proper-steelblue-goldfinch-31.hostingersite.com` (desde 19-nov-2026) |
+| Producción | `https://coolnetworks.eu` — todavía en Horizons; se apunta en la fase 2 del runbook de migración |
+
+**Indexación:** en cualquier dominio que no sea `coolnetworks.eu`, el `.htaccess` añade
+`X-Robots-Tag: noindex, nofollow` y sirve un `robots.txt` que lo bloquea todo. No hay que acordarse de nada al
+pasar a producción. (`PUBLIC_NOINDEX=1` en el build también pone `noindex` en el HTML, por si se necesita.)
 
 Comprobar un despliegue:
 

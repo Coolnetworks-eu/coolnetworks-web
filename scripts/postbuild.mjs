@@ -26,8 +26,15 @@ DirectoryIndex index.html
 ErrorDocument 404 /404.html
 AddDefaultCharset utf-8
 
+# Fuera del dominio de producción (subdominio de prueba, .hostingersite.com...) nada se indexa:
+# cabecera X-Robots-Tag y robots.txt que lo bloquea todo. No depende de variables de build.
+SetEnvIfNoCase Host "^(www\\.)?coolnetworks\\.eu$" CN_PRODUCTION
+
 <IfModule mod_rewrite.c>
 RewriteEngine On
+
+RewriteCond %{HTTP_HOST} !^(www\\.)?coolnetworks\\.eu$ [NC]
+RewriteRule ^robots\\.txt$ robots-noindex.txt [L]
 
 # HTTPS y sin www
 RewriteCond %{HTTPS} !=on
@@ -58,6 +65,7 @@ RewriteRule ^ - [R=404,L]
 </IfModule>
 
 <IfModule mod_headers.c>
+Header always set X-Robots-Tag "noindex, nofollow" env=!CN_PRODUCTION
 Header always set X-Content-Type-Options "nosniff"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
 Header always set X-Frame-Options "SAMEORIGIN"
@@ -72,6 +80,7 @@ Header set Cache-Control "public, max-age=300"
 </IfModule>
 `;
 fs.writeFileSync(path.join(dist, '.htaccess'), htaccess);
+fs.writeFileSync(path.join(dist, 'robots-noindex.txt'), 'User-agent: *\nDisallow: /\n');
 
 // backend PHP del formulario
 const apiSrc = path.join(root, 'php');

@@ -1,0 +1,30 @@
+# Comprueba en cada push y PR que la web construye y que no se cuela ninguna credencial.
+# El despliegue NO pasa por aquí: Hostinger (app de GitHub en la org Coolnetworks-eu) construye
+# `main` por su cuenta (npm run build -> dist/) y lo publica en cada push.
+name: build-check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Ninguna credencial en dist/
+        run: |
+          if find dist -iname '*config*.php' | grep -q .; then echo "config PHP en dist/"; exit 1; fi
+      - name: Rutas generadas = src/data/routes.json
+        run: |
+          for r in $(node -e "console.log(require('./src/data/routes.json').join(' '))"); do
+            f="dist${r}.html"; [ "$r" = "/" ] && f="dist/index.html"
+            [ -f "$f" ] || { echo "falta $f"; exit 1; }
+          done
