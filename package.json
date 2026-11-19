@@ -1,0 +1,23 @@
+{
+  "name": "coolnetworks-web",
+  "private": true,
+  "type": "module",
+  "description": "Web comercial de CoolNetworks (coolnetworks.eu) — sitio estático generado con Astro, alojado en Hostinger Business Web Hosting.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && node scripts/postbuild.mjs",
+    "preview": "astro preview",
+    "check:routes": "node scripts/check-routes.mjs"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@fontsource/sora": "^5.3.0",
+    "astro": "^7.4.13"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.20",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^3.4.19"
+  }
+}

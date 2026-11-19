@@ -1,0 +1,205 @@
+[
+ {
+  "label": "IT",
+  "items": [
+   {
+    "href": "/it",
+    "label": "Visión general"
+   },
+   {
+    "href": "/it/soporte",
+    "label": "Soporte IT"
+   },
+   {
+    "href": "/it/infraestructura",
+    "label": "Infraestructura"
+   },
+   {
+    "href": "/it/continuidad",
+    "label": "Continuidad"
+   },
+   {
+    "href": "/it/microsoft-365",
+    "label": "Microsoft 365"
+   }
+  ]
+ },
+ {
+  "label": "Ciberseguridad",
+  "items": [
+   {
+    "href": "/ciberseguridad",
+    "label": "Visión general"
+   },
+   {
+    "href": "/ciberseguridad/auditorias",
+    "label": "Auditorías"
+   },
+   {
+    "href": "/ciberseguridad/vulnerabilidades",
+    "label": "Vulnerabilidades"
+   },
+   {
+    "href": "/ciberseguridad/hardening",
+    "label": "Hardening"
+   },
+   {
+    "href": "/ciberseguridad/endpoint",
+    "label": "Endpoint"
+   },
+   {
+    "href": "/ciberseguridad/siem",
+    "label": "SIEM"
+   },
+   {
+    "href": "/ciberseguridad/pentesting",
+    "label": "Pentesting"
+   }
+  ]
+ },
+ {
+  "label": "Compliance",
+  "items": [
+   {
+    "href": "/compliance",
+    "label": "Visión general"
+   },
+   {
+    "href": "/compliance/iso-27001",
+    "label": "ISO 27001"
+   },
+   {
+    "href": "/compliance/iso-9001",
+    "label": "ISO 9001"
+   },
+   {
+    "href": "/compliance/tisax",
+    "label": "TISAX"
+   },
+   {
+    "href": "/compliance/ens",
+    "label": "ENS"
+   },
+   {
+    "href": "/compliance/pecal",
+    "label": "PECAL"
+   }
+  ]
+ },
+ {
+  "label": "IA",
+  "items": [
+   {
+    "href": "/inteligencia-artificial",
+    "label": "Visión general"
+   },
+   {
+    "href": "/ia/diagnostico-360",
+    "label": "Diagnóstico 360"
+   },
+   {
+    "href": "/ia/estrategia",
+    "label": "Estrategia"
+   },
+   {
+    "href": "/ia/automatizacion",
+    "label": "Automatización"
+   },
+   {
+    "href": "/ia/agentes",
+    "label": "Agentes"
+   },
+   {
+    "href": "/ia/rag-privada",
+    "label": "RAG privada"
+   },
+   {
+    "href": "/ia/integraciones",
+    "label": "Integraciones"
+   },
+   {
+    "href": "/ia/gobierno",
+    "label": "Gobierno"
+   },
+   {
+    "href": "/ia/formacion",
+    "label": "Formación"
+   },
+   {
+    "href": "/ia/smart-helpdesk",
+    "label": "Smart Helpdesk"
+   }
+  ]
+ },
+ {
+  "label": "Sectores",
+  "items": [
+   {
+    "href": "/sectores/automocion",
+    "label": "Automoción"
+   },
+   {
+    "href": "/sectores/industria",
+    "label": "Industria"
+   },
+   {
+    "href": "/sectores/ingenierias",
+    "label": "Ingenierías"
+   },
+   {
+    "href": "/sectores/defensa",
+    "label": "Defensa"
+   },
+   {
+    "href": "/sectores/pymes",
+    "label": "PYMES"
+   }
+  ]
+ },
+ {
+  "label": "Recursos",
+  "items": [
+   {
+    "href": "/recursos/blog",
+    "label": "Blog"
+   },
+   {
+    "href": "/recursos/guias",
+    "label": "Guías"
+   },
+   {
+    "href": "/recursos/webinars",
+    "label": "Webinars"
+   },
+   {
+    "href": "/casos-de-exito",
+    "label": "Casos de éxito"
+   },
+   {
+    "href": "/diagnosticos",
+    "label": "Diagnósticos"
+   },
+   {
+    "href": "/metodologia",
+    "label": "Metodología"
+   }
+  ]
+ },
+ {
+  "label": "Empresa",
+  "items": [
+   {
+    "href": "/empresa/sobre-nosotros",
+    "label": "Sobre nosotros"
+   },
+   {
+    "href": "/empresa/equipo",
+    "label": "Equipo"
+   },
+   {
+    "href": "/empresa/contacto",
+    "label": "Contacto"
+   }
+  ]
+ }
+]

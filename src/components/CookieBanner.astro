@@ -1,0 +1,13 @@
+---
+// El sitio no carga cookies de medición; el banner solo guarda la elección del visitante
+// (localStorage 'cn-cookie-consent') para no volver a mostrarse.
+---
+<div data-cookie-banner hidden class="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/[0.98] backdrop-blur">
+  <div class="mx-auto flex max-w-[72rem] flex-col gap-4 px-6 py-5 text-sm sm:flex-row sm:items-center sm:justify-between">
+    <p class="text-muted-foreground">Usamos cookies técnicas necesarias. Las cookies de medición solo se activan con tu consentimiento. <a class="text-primary underline underline-offset-4" href="/legal/cookies">Más información</a>.</p>
+    <div class="flex shrink-0 gap-3">
+      <button type="button" data-cookie-choice="rejected" class="min-h-[44px] border border-border px-4 text-xs font-semibold uppercase tracking-[0.1em]">Rechazar</button>
+      <button type="button" data-cookie-choice="accepted" class="min-h-[44px] bg-primary px-4 text-xs font-semibold uppercase tracking-[0.1em] text-primary-foreground">Aceptar</button>
+    </div>
+  </div>
+</div>

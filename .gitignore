@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+# Configuración SMTP real: vive FUERA del repo y fuera de public_html en el servidor
+contacto-config.php
+php/vendor/
+*.log
+.DS_Store

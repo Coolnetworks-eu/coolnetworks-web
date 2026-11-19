@@ -1,0 +1,126 @@
+[
+ {
+  "from": "/about",
+  "to": "/empresa/sobre-nosotros"
+ },
+ {
+  "from": "/contact",
+  "to": "/empresa/contacto"
+ },
+ {
+  "from": "/contacto",
+  "to": "/empresa/contacto"
+ },
+ {
+  "from": "/services",
+  "to": "/it"
+ },
+ {
+  "from": "/servicios",
+  "to": "/it"
+ },
+ {
+  "from": "/servicios-it",
+  "to": "/it"
+ },
+ {
+  "from": "/servicios-de-ciberseguridad",
+  "to": "/ciberseguridad"
+ },
+ {
+  "from": "/auditorias-compliance",
+  "to": "/compliance"
+ },
+ {
+  "from": "/auditorias/ens",
+  "to": "/compliance/ens"
+ },
+ {
+  "from": "/auditorias/iso-27001",
+  "to": "/compliance/iso-27001"
+ },
+ {
+  "from": "/auditorias/iso-9001",
+  "to": "/compliance/iso-9001"
+ },
+ {
+  "from": "/auditorias/pecal",
+  "to": "/compliance/pecal"
+ },
+ {
+  "from": "/auditorias/tisax",
+  "to": "/compliance/tisax"
+ },
+ {
+  "from": "/blog",
+  "to": "/recursos/blog"
+ },
+ {
+  "from": "/certificaciones-tisax-y-isoiec-27001",
+  "to": "/compliance"
+ },
+ {
+  "from": "/formacion-en-ciberseguridad",
+  "to": "/ia/formacion"
+ },
+ {
+  "from": "/ia/agentes-ia",
+  "to": "/ia/agentes"
+ },
+ {
+  "from": "/ia/automatización-documental",
+  "to": "/ia/automatizacion"
+ },
+ {
+  "from": "/ia/automatización-procesos",
+  "to": "/ia/automatizacion"
+ },
+ {
+  "from": "/ia/consultoría-ia",
+  "to": "/ia/estrategia"
+ },
+ {
+  "from": "/ia/diagnostico-ia",
+  "to": "/ia/diagnostico-360"
+ },
+ {
+  "from": "/ia/formacion-ia",
+  "to": "/ia/formacion"
+ },
+ {
+  "from": "/ia/gobierno-seguridad-ia",
+  "to": "/ia/gobierno"
+ },
+ {
+  "from": "/ia/ia-generativa",
+  "to": "/inteligencia-artificial"
+ },
+ {
+  "from": "/ia/ia-helpdesk",
+  "to": "/ia/smart-helpdesk"
+ },
+ {
+  "from": "/ia/ia-privada-segura",
+  "to": "/ia/rag-privada"
+ },
+ {
+  "from": "/ia/rag-conocimiento",
+  "to": "/ia/rag-privada"
+ },
+ {
+  "from": "/about/*",
+  "to": "/empresa/sobre-nosotros"
+ },
+ {
+  "from": "/servicios-it/*",
+  "to": "/it"
+ },
+ {
+  "from": "/servicios-de-ciberseguridad/*",
+  "to": "/ciberseguridad"
+ },
+ {
+  "from": "/auditorias/*",
+  "to": "/compliance"
+ }
+]

@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingCta from '../components/FloatingCta.astro';
+import CookieBanner from '../components/CookieBanner.astro';
+import { SITE_NAME, DEFAULT_LOCALE, OG_LOCALE, TRANSLATIONS } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string | null;
+  robots?: string | null;
+  ogImage?: string | null;
+  ld?: unknown[];
+  mainClass?: string;
+  lang?: string;
+}
+const { title, description, robots, ogImage, ld = [], mainClass = '', lang = DEFAULT_LOCALE } = Astro.props;
+
+const site = Astro.site!;
+const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
+const canonical = site.origin + (path === '/' ? '/' : path);
+const og = new URL(ogImage || '/img/og-coolnetworks.webp', site).href;
+const noindexBuild = import.meta.env.PUBLIC_NOINDEX === '1';
+const robotsContent = noindexBuild ? 'noindex, nofollow' : robots || 'index, follow, max-image-preview:large';
+
+// hreflang: la página en su idioma + las traducciones registradas + x-default
+const alternates: [string, string][] = [];
+if (path !== '/404') {
+  const tr = TRANSLATIONS[path] || {};
+  alternates.push([lang, canonical]);
+  for (const [l, p] of Object.entries(tr)) if (l !== lang && p) alternates.push([l, new URL(p, site).href]);
+  alternates.push(['x-default', canonical]);
+}
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    <meta name="robots" content={robotsContent} />
+    {path !== '/404' && <link rel="canonical" href={canonical} />}
+    {alternates.map(([l, href]) => <link rel="alternate" hreflang={l} href={href} />)}
+    <link rel="icon" type="image/png" href="/img/logo-coolnetworks.png" />
+    <meta name="theme-color" content="#0a1631" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={OG_LOCALE[lang] || 'es_ES'} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={og} />
+    {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+    <script is:inline>document.documentElement.classList.add('js');</script>
+  </head>
+  <body>
+    <div class="flex min-h-screen flex-col bg-background">
+      <Header />
+      <main class={mainClass}><slot /></main>
+      <Footer />
+      <FloatingCta />
+      <CookieBanner />
+    </div>
+    <script src="../scripts/site.ts"></script>
+  </body>
+</html>
