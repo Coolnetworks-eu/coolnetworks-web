@@ -1,0 +1,21 @@
+---
+// Portado de components/site/Breadcrumbs.jsx. El JSON-LD BreadcrumbList lo calcula breadcrumbSchema().
+import Icon from '../Icon.astro';
+import { breadcrumbTrail } from '../../lib/breadcrumbs';
+interface Props { path: string; current?: string }
+const { path, current } = Astro.props;
+const trail = breadcrumbTrail(path, current);
+---
+<nav aria-label="Migas de pan" class="border-b border-border/70 bg-secondary/40">
+  <ol class="mx-auto flex max-w-[72rem] flex-wrap items-center gap-1 px-6 py-3 text-xs text-muted-foreground">
+    <li><a href="/" class="transition-colors hover:text-primary">Inicio</a></li>
+    {trail.map((item, index) => (
+      <li class="flex items-center gap-1">
+        <Icon name="chevron-right" class="h-3 w-3 shrink-0 opacity-60" />
+        {index === trail.length - 1
+          ? <span aria-current="page" class="text-foreground/80">{item.name}</span>
+          : <a href={item.to} class="transition-colors hover:text-primary">{item.name}</a>}
+      </li>
+    ))}
+  </ol>
+</nav>

@@ -5,6 +5,7 @@ import Footer from '../components/Footer.astro';
 import FloatingCta from '../components/FloatingCta.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import { SITE_NAME, DEFAULT_LOCALE, OG_LOCALE, TRANSLATIONS } from '../data/site';
+import { organizationSchema } from '../content/schema.js';
 
 interface Props {
   title: string;
@@ -15,12 +16,14 @@ interface Props {
   mainClass?: string;
   lang?: string;
 }
-const { title, description, robots, ogImage, ld = [], mainClass = '', lang = DEFAULT_LOCALE } = Astro.props;
+const { title, description, robots, ogImage, ld = [], mainClass = 'flex-1', lang = DEFAULT_LOCALE } = Astro.props;
 
 const site = Astro.site!;
 const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/';
 const canonical = site.origin + (path === '/' ? '/' : path);
-const og = new URL(ogImage || '/img/og-coolnetworks.webp', site).href;
+const og = new URL(ogImage || '/img/og-coolnetworks.jpg', site).href;
+// Organización + WebSite en todas las páginas (como el Layout de Horizons), luego los de la página.
+const allLd = [organizationSchema, ...ld];
 const noindexBuild = import.meta.env.PUBLIC_NOINDEX === '1';
 const robotsContent = noindexBuild ? 'noindex, nofollow' : robots || 'index, follow, max-image-preview:large';
 
@@ -56,7 +59,7 @@ if (path !== '/404') {
     <meta name="twitter:title" content={title} />
     {description && <meta name="twitter:description" content={description} />}
     <meta name="twitter:image" content={og} />
-    {ld.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+    {allLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
     <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>

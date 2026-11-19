@@ -165,7 +165,15 @@ for (const form of document.querySelectorAll<HTMLFormElement>('form[data-cn-form
       box.tabIndex = -1;
       box.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="h-8 w-8 text-primary" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>'
         + '<h3 class="mt-4 font-display text-xl font-semibold text-[hsl(var(--ink))]">Solicitud recibida</h3>'
-        + '<p class="mt-2 text-sm leading-relaxed text-muted-foreground">Te contactamos en un plazo máximo de 24 horas laborables.</p>';
+        + '<p class="mt-2 text-sm leading-relaxed text-muted-foreground">Te contactamos en un plazo máximo de 24 horas laborables para concretar el alcance del diagnóstico.</p>'
+        + '<button type="button" class="mt-6 min-h-[44px] border border-border px-4 text-xs font-semibold uppercase tracking-[0.1em] transition-colors hover:border-primary hover:text-primary">Enviar otra solicitud</button>';
+      // mismo comportamiento que LeadForm.jsx: "Enviar otra solicitud" vuelve al formulario vacío
+      box.querySelector('button')!.addEventListener('click', () => {
+        form.reset();
+        if (ts) ts.value = String(Math.floor(Date.now() / 1000));
+        if (submit) submit.disabled = false;
+        box.replaceWith(form);
+      });
       form.replaceWith(box);
       box.focus();
     } catch {

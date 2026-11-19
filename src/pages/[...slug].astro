@@ -1,0 +1,80 @@
+---
+// Portado de pages/StandardPage.jsx: una página por cada entrada de src/content/*.js (src/lib/pages.ts).
+// El texto se edita en src/content/, no aquí.
+import Layout from '../layouts/Layout.astro';
+import Breadcrumbs from '../components/site/Breadcrumbs.astro';
+import PageHero from '../components/site/PageHero.astro';
+import Sections from '../components/site/Sections.astro';
+import CtaBand from '../components/site/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import { pages } from '../lib/pages';
+import { breadcrumbSchema } from '../lib/breadcrumbs';
+import { company } from '../content/site.js';
+
+export function getStaticPaths() {
+  return Object.keys(pages).map((path) => ({ params: { slug: path.slice(1) } }));
+}
+
+const path = '/' + Astro.params.slug;
+const page = pages[path];
+const canonical = `${company.url}${path}`;
+const isLegal = path.startsWith('/legal/');
+const faq = page.sections?.find((s: any) => s.type === 'faq');
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebPage',
+      '@id': `${canonical}#webpage`,
+      url: canonical,
+      name: page.h1,
+      description: page.description,
+      inLanguage: 'es-ES',
+      isPartOf: { '@id': `${company.url}/#website` },
+    },
+    {
+      '@type': 'Service',
+      name: page.h1,
+      description: page.description,
+      serviceType: page.kicker,
+      areaServed: { '@type': 'Country', name: 'España' },
+      provider: { '@id': `${company.url}/#organization` },
+    },
+    ...(faq
+      ? [{
+          '@type': 'FAQPage',
+          mainEntity: faq.items.map((item: any) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: { '@type': 'Answer', text: item.a },
+          })),
+        }]
+      : []),
+  ],
+};
+const actions = page.cta ? [page.cta.primary, page.cta.secondary].filter(Boolean) : [];
+---
+<Layout
+  title={page.title}
+  description={page.description}
+  robots={isLegal && path !== '/legal/aviso-legal' ? 'noindex, follow' : undefined}
+  ld={[schema, breadcrumbSchema(path, page.h1)]}
+>
+  <Breadcrumbs path={path} current={page.h1} />
+  <PageHero kicker={page.kicker} h1={page.h1} lead={page.lead} image={page.image} actions={actions} />
+  <Sections sections={page.sections} />
+  <CtaBand cta={page.cta} />
+  {page.related?.length > 0 && (
+    <section class="mx-auto max-w-[72rem] px-6 py-12">
+      <h2 class="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Contenido relacionado</h2>
+      <div class="mt-4 flex flex-wrap gap-3">
+        {page.related.map((item: any) => (
+          <a href={item.to} class="inline-flex items-center gap-2 border border-border px-4 py-2 text-sm text-foreground/80 transition-colors hover:border-primary hover:text-primary">
+            {item.label}<Icon name="arrow-up-right" class="h-3.5 w-3.5" />
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+</Layout>

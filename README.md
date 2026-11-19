@@ -9,10 +9,12 @@ Sustituye al proyecto de Hostinger Horizons `edc82c9d-4fec-483e-8b42-01568af657a
 
 | Ruta | Qué es |
 |---|---|
-| `src/pages/**.astro` | Una página por ruta (53 + 404). HTML con clases de Tailwind, importado del sitio Horizons el 19-nov-2026. **El texto se edita aquí.** |
-| `src/layouts/Layout.astro` | `<head>`: title, description, canonical, hreflang, Open Graph, Twitter, JSON-LD. Cabecera, pie, banner de cookies. |
-| `src/components/` | Cabecera (menús), pie, botones flotantes, banner de cookies, iconos. |
-| `src/data/nav.json` | Menú (escritorio y móvil). |
+| `src/content/*.js` | **El texto de 42 páginas** (servicios IT, ciberseguridad, compliance, IA, sectores, metodología, recursos, empresa, legal), menú, pie y datos de la empresa. Copiados tal cual del código exportado de Horizons (`apps/web/src/data/`), salvo `company.url` → `.eu` e imágenes locales. **Para cambiar un texto, se edita aquí.** |
+| `src/pages/[...slug].astro` | Plantilla que pinta cada página de `src/content/` (portada de `StandardPage.jsx`): hero, secciones (`text`, `list`, `grid`, `steps`, `links`, `note`, `faq`), CTA, relacionados y JSON-LD (WebPage, Service, FAQPage, BreadcrumbList). |
+| `src/pages/*.astro` (resto) | Las 11 páginas con diseño propio (portada, diagnósticos y sus 4 formularios, contacto, soporte, sectores, recursos, casos de éxito) y el 404, en HTML con clases de Tailwind importado del sitio publicado. |
+| `src/components/site/` | Breadcrumbs, PageHero, Sections, CtaBand (portados de los `.jsx` de Horizons). |
+| `src/layouts/Layout.astro` | `<head>`: title, description, canonical, hreflang, Open Graph, Twitter, JSON-LD de la organización (`src/content/schema.js`). Cabecera, pie, banner de cookies. |
+| `src/components/` | Cabecera (menús, leen `nav` de `src/content/site.js`), pie, botones flotantes, banner de cookies, iconos Lucide (`icons.json`). |
 | `src/data/routes.json` | Rutas publicadas: alimentan el sitemap y `npm run check:routes`. **Añadir aquí cada página nueva.** |
 | `src/data/redirects.json` | Rutas antiguas del sitio Horizons → 301 (las genera `scripts/postbuild.mjs` en `.htaccess`). |
 | `src/data/site.ts` | Contacto, traducciones (hreflang) y páginas `noindex`. |
