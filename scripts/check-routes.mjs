@@ -21,7 +21,9 @@ for (const r of routes) {
 for (const { from, to } of redirects) {
   const res = await get(from.replace('/*', '/x'));
   const loc = res.headers.get('location') || '';
-  ok(res.status === 301 && new URL(loc, base).pathname === to, `${from} -> ${res.status} ${loc}`);
+  // destino absoluto (otro dominio, p. ej. la landing en maswer.coolnetworks.eu): se compara la URL entera
+  const got = new URL(loc, base);
+  ok(res.status === 301 && (/^https?:/.test(to) ? got.href === to : got.pathname === to), `${from} -> ${res.status} ${loc}`);
 }
 for (const [path, to] of [['/it/microsoft-365.html', '/it/microsoft-365'], ['/it/', '/it'], ['/empresa/contacto/', '/empresa/contacto']]) {
   const res = await get(path);
