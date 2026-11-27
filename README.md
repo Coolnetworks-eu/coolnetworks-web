@@ -43,7 +43,7 @@ Push a `main` → **Hostinger construye y publica solo** (app de GitHub instalad
 | Entorno | Sitio en Hostinger (pedido 2039759, cuenta de hosting `u769224653`) |
 |---|---|
 | Prueba | `https://proper-steelblue-goldfinch-31.hostingersite.com` (desde 19-nov-2026) |
-| Producción | `https://coolnetworks.eu` — todavía en Horizons; se apunta en la fase 2 del runbook de migración |
+| Producción | `https://coolnetworks.eu` — se conecta el 28-nov-2026 (paso 2 del runbook de migración). Las rutas antiguas de la landing de Maswer (`/de`, `/en`, `/es` y sus páginas legales) redirigen a `maswer.coolnetworks.eu` |
 
 **Indexación:** en cualquier dominio que no sea `coolnetworks.eu`, el `.htaccess` añade
 `X-Robots-Tag: noindex, nofollow` y sirve un `robots.txt` que lo bloquea todo. No hay que acordarse de nada al

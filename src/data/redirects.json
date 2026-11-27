@@ -108,6 +108,54 @@
   "to": "/ia/rag-privada"
  },
  {
+  "from": "/de",
+  "to": "https://maswer.coolnetworks.eu/de"
+ },
+ {
+  "from": "/en",
+  "to": "https://maswer.coolnetworks.eu/en"
+ },
+ {
+  "from": "/es",
+  "to": "https://maswer.coolnetworks.eu/es"
+ },
+ {
+  "from": "/de/impressum",
+  "to": "https://maswer.coolnetworks.eu/de/impressum"
+ },
+ {
+  "from": "/de/datenschutz",
+  "to": "https://maswer.coolnetworks.eu/de/datenschutz"
+ },
+ {
+  "from": "/de/cookies",
+  "to": "https://maswer.coolnetworks.eu/de/cookies"
+ },
+ {
+  "from": "/en/legal-notice",
+  "to": "https://maswer.coolnetworks.eu/en/legal-notice"
+ },
+ {
+  "from": "/en/privacy",
+  "to": "https://maswer.coolnetworks.eu/en/privacy"
+ },
+ {
+  "from": "/en/cookies",
+  "to": "https://maswer.coolnetworks.eu/en/cookies"
+ },
+ {
+  "from": "/es/aviso-legal",
+  "to": "https://maswer.coolnetworks.eu/es/aviso-legal"
+ },
+ {
+  "from": "/es/privacidad",
+  "to": "https://maswer.coolnetworks.eu/es/privacidad"
+ },
+ {
+  "from": "/es/cookies",
+  "to": "https://maswer.coolnetworks.eu/es/cookies"
+ },
+ {
   "from": "/about/*",
   "to": "/empresa/sobre-nosotros"
  },

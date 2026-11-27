@@ -167,7 +167,7 @@ export const miscPages = {
                     'Domicilio social: Sor Maria de Jesus 6, Los Fayos 50513, ZARAGOZA',
                     'Correo electrónico: info@coolnetworks.it',
                     'Teléfono: 621 15 75 00',
-                    'Sitio web: https://coolnetworks.it',
+                    'Sitio web: https://coolnetworks.eu',
                     'Datos registrales: Inscrita en el Registro Mercantil de Zaragoza, tomo 223, libro 12 folio 585, hoja 12, inscripción 172369B.',
                 ],
             },
@@ -175,7 +175,7 @@ export const miscPages = {
                 type: 'text',
                 title: '2. Objeto y ámbito de aplicación',
                 body: [
-                    'El presente Aviso Legal regula el acceso, navegación y utilización del sitio web https://coolnetworks.it, así como las responsabilidades derivadas del uso de sus contenidos.',
+                    'El presente Aviso Legal regula el acceso, navegación y utilización del sitio web https://coolnetworks.eu, así como las responsabilidades derivadas del uso de sus contenidos.',
                     'La web tiene como finalidad ofrecer información sobre COOLNETWORKS y sus servicios profesionales, entre los que se incluyen servicios IT gestionados, soporte técnico, ciberseguridad, consultoría tecnológica, preparación para auditorías y sistemas de gestión, compliance e implantación y gobierno de soluciones de inteligencia artificial.',
                     'El acceso a esta web atribuye la condición de usuario e implica la aceptación de las condiciones recogidas en este Aviso Legal. Si el usuario no está de acuerdo con ellas, deberá abstenerse de utilizar el sitio web.',
                 ],
